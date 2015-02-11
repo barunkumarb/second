@@ -1,0 +1,234 @@
+#middle {
+	background-color: #f1f1f1;
+	border-radius: 5px;	
+	margin: 62px auto auto;
+	width: 340px;
+	padding-bottom: 20px;
+}
+
+#mtop h3 {
+	font-size: 40px;
+	font-weight: 600;
+	color: #767a80;
+	text-align: center;
+	padding-top: 21px;
+	margin: 20px 50px;
+}
+
+#mtop {
+	margin: 0 0 -12px 1px;
+}
+
+#mgoog {
+	
+	
+	text-align: center;
+}
+img
+{
+  width:100px;
+  height:100px;
+  border-radius: 55px;
+}
+
+#field {
+	border-top: 1px solid #ddd;
+	margin: 31px 32px;
+	padding: 0px 0px 0px;
+}
+
+.tf {
+	border-radius: 3px;
+	margin: 14px 1px 1px -37px;
+	width: 255px;
+	height: 35px;
+	border: 1px solid white;
+	padding-left: 10px;
+	
+	}
+
+ul li {
+	display: block;
+}
+
+.cb {
+	margin: 16px 0px 0px -36px;
+}
+
+.myButton {
+	background-color: #2AAA4C;
+	-moz-border-radius: 28px;
+	-webkit-border-radius: 28px;
+	border-radius: 28px;
+	border: 1px solid #18ab29;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-family: arial;
+	font-size: 13px;
+	padding: 10px 18px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #2f6627;
+}
+
+.myButton:FOCUS {
+	outline: none;
+}
+
+.tf:focus {
+	border: 1px solid #1490e7;
+}
+
+#blockmsg{
+	width: 24%;
+	margin: 10px auto;
+	text-align: center;
+	height: 20px;
+	position: absolute;
+	left: 38%;
+}
+a:focus
+{
+	outline:none;
+}
+
+#fieldcontent #left
+{
+	float: left;
+	width: 450px;
+}
+#fieldcontent #right
+{
+	float: left;	
+	padding: 21px 0px 0px 100px;
+}
+#fieldcontent #right img
+{
+	 margin-bottom: 10px
+}
+
+ #foot
+{
+/* 	float: left; */
+/* 	width: 100%; */
+/* 	margin-bottom: 200px; */
+}
+
+.mailimg
+{
+	width: 29px;
+	height: 38px;
+	padding-bottom: 11px;
+}
+.mailimg:hover
+{
+	cursor:pointer;
+
+}
+
+.modal-body .form-control 
+{
+margin: 25px 0px
+}
+
+.header
+{
+	margin-left: 10px;
+
+	}
+
+#header
+{
+	margin: 20px 0px;
+}
+
+.user
+{
+float: right;
+}
+
+hr
+{
+clear: both;
+}
+
+#field a, #field a:visited, #field a:hover {
+color: #0066cc;
+text-decoration: none;
+}
+#mbottum
+{
+margin-bottom: 7px;
+}
+
+/*  Contacts view starts */
+
+#email_container .email-attr, #number_container .number-attr
+ {
+	margin: 5px 0px;
+	padding-bottom: 33px;
+}
+
+#email_container .keys, #number_container .keys
+{
+	float:  left;
+	width: 20%;
+	margin-right: 3px;	
+}
+
+#email_container .email, #number_container .number 
+{
+	width: 75%;
+	float: left;
+}
+
+#email_container .remove, #number_container .remove
+{
+	margin-left: 3px;
+	float: left;
+	margin-top: 10px;
+}
+
+#email_container .remove:hover, #number_container .remove:hover
+{
+	cursor: pointer;
+}
+
+label
+{
+	margin: 10px 0px;
+}
+
+.empty, #container .empty
+{
+	border-color: #E77575;
+}
+
+#address
+{
+//margin-bottom: 100px;
+}
+
+.glyphicon , .glyphicon:hover
+{
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+#mainpage
+{
+	padding-top: 20px;
+}
+
+
+#blockmsg .alert {
+padding: 7px;
+margin-bottom: 20px;
+
+}
+
+#all-tasks
+{
+float: right;
+margin-top: 0px;
+}

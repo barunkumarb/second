@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- The HTML 4.01 Transitional DOCTYPE declaration-->
+<!-- above set at the top of the file will set     -->
+<!-- the browser's rendering engine into           -->
+<!-- "Quirks Mode". Replacing this declaration     -->
+<!-- with a "Standards Mode" doctype is supported, -->
+<!-- but may lead to some differences in layout.   -->
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Hello App Engine</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    
+    
+    
+    
+    
+  </head>
+  <body>
+  
+  <script>
+     
+
+</script>
+  <div class="container">
+  <h1>Test App</h1>
+  <hr>
+  <div class="page"></div>
+  
+  </div>
+      <script src="js/jquery.min.js"></script>
+    <script src="js/underscore-min.js"></script>
+    <script src="js/backbone-min.js"></script>
+    
+    <script src="js/task.js"></script>
+    
+    <script type="text/template" id="users_template">
+			<a href="#/new" class="btn btn-primary">New</a>
+			<hr/>
+            <table class="table striped">
+				<thead><tr>					
+						<th>Name</th>
+						<th>Email-Id</th>
+						<th>Mobile Number</th>
+					</tr>
+				</thead>
+				<tbody>		
+				<% _.each(us,function(user){%>
+					<tr>
+					<td><%= user.get('name')%></td>
+					<td><%= user.get('email')%></td>
+					<td><%= user.get('number')%></td>
+					<td><a href="#/edit/<%= user.get('id') %>" class="btn btn-default" >Edit</a></td>
+					</tr>					     
+				<%});%>
+				</tbody>
+			</table>
+
+		</script>
+		<script type="text/template" id="edit_users_template">
+			<form class="edit-user-form">
+      <legend><%= user ? 'Update' : 'New' %> User</legend>
+        <label>Name</label>
+        <input name="name" type="text" class="form-control" value="<%= user ? user.get('name') : '' %>" />
+        <label>Email</label>
+        <input name="email" type="text" class="form-control" value="<%= user ? user.get('email') : '' %>"  />
+        <label>Contact Number</label>
+        <input name="number" type="text" class="form-control" value="<%= user ? user.get('number') : '' %>" />
+        <hr />
+ 		<button type="submit" class="btn"><%= user ? 'Update' : 'Create' %></button>    
+		<% if(user) { %>
+          <input name="id" id="id" type="hidden" value="<%= user.get('id') %>"  />
+		  <input name="delete" type="button" value="Delete" class="btn delete" />
+      <% }; %>
+        
+    </form>
+		</script>
+        
+    
+    <script type="text/javascript">
+   
+    $.fn.serializeObject = function() {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function() {
+            if (o[this.name] !== undefined) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+      };
+   
+      var User=Backbone.Model.extend({
+          urlRoot: '/Users'    	
+    	
+    });
+      
+      
+    var Users=Backbone.Collection.extend({
+          url: '/Users'    	
+    	
+    });
+   
+					var UserListView = Backbone.View.extend({
+						el : ".page",
+						render : function() {
+							var users = new Users();
+							var that = this;							
+							alert("welcome1");
+							
+							
+							users.fetch({
+								success : function(users) {
+									
+									 
+										var template=_.template($('#users_template').html());										
+										that.$el.html(template({us:users.models}));
+									
+								},
+								error: function(data, status, er) {
+									alert("error: " + JSON.stringify(data) + " status: " + JSON.stringify(status) + " er:" + JSON.stringify(er));
+								}
+							     
+							});
+
+						}
+
+					});
+					
+					var UserEditView=Backbone.View.extend({
+						
+						el: ".page",
+						render: function(opt){
+							var that=this;
+							var template=_.template($('#edit_users_template').html());
+							if(opt.id)
+								{
+								   var user=new User({id: opt.id});
+								   user.fetch({
+									   success:function(user){
+										   										
+											that.$el.html(template({user: user}));
+									   }
+								   });
+								}
+							else
+								{
+																		
+									this.$el.html(template({user: null}));
+								}
+							
+						},
+						events:{
+							'submit .edit-user-form': 'saveuser',
+							'click .delete': 'deleteuser'
+						},						
+						saveuser: function(ev){
+							var user=new User();
+							var userDetails = $(ev.currentTarget).serializeObject();
+																					 
+							 user.save(userDetails,{
+								 success: function(user){
+									  router.navigate('',{trigger:true});
+								 	},
+								 error: function(data, status, er) {
+										alert("error1: " + data + " status: " + JSON.stringify(status) + " er:" + JSON.stringify(er));
+									}
+							 });
+							
+							return false;
+						},
+						deleteuser: function(ev)
+						{
+							var user=new User({id: $('#id').val()})
+							user.destroy({
+						          success: function () {
+						            console.log('destroyed');
+						            router.navigate('',{trigger:true});
+						          },
+						          error: function(data, status, er) {
+										alert("error2: " + data + " status: " + JSON.stringify(status) + " er:" + JSON.stringify(er));
+									}
+						        });
+						        return false;
+						}
+						
+					});
+
+					var Router = Backbone.Router.extend({
+						routes : {
+							"" : "home",
+						"edit/:id": "edit",
+						  "new": "edit"
+
+						}
+					});
+					var userlistview = new UserListView();
+					var usereditview = new UserEditView();
+
+					var router = new Router;
+					router.on('route:home', function() {
+
+						userlistview.render();
+					});
+					router.on('route:edit', function(id) {
+						usereditview.render({id: id});
+					});
+					Backbone.history.start();
+				</script>
+                
+  </body>
+</html>

@@ -1,0 +1,92 @@
+#task-creation {
+	margin: 45px 0px;
+	box-shadow: 0px 2px 18px 2px #ddd;
+	padding: 12px;
+	border-radius: 10px;
+	float: left;
+	width: 100%;
+}
+
+#task-form .form-control {
+	float: left;
+	width: 25%;
+	margin: 0px 10px;
+}
+
+#dropdownTask {
+	width: 100px;
+	float: left;
+	margin: 0px 10px;
+}
+
+#task-form .dropdown {
+	position: relative;
+	float: left;
+}
+
+#contactid {
+	float: left;
+	width: 300px;
+}
+
+#duedate .form-control {
+	width: 100%;
+}
+
+#duedate {
+	width: 235px;
+}
+
+.btn-primary {
+	margin: 10px;
+}
+
+#taskview {
+	clear: both;
+	border: 1px solid #ddd;
+	margin-bottom: 100px
+}
+
+#statuscount,#filter-ds,#sort-ds {
+	margin: 14px 0px 7px 0px;
+	padding: 12px;
+	border-radius: 4px;
+	float: left;
+	width: 100%;
+	border: 1px solid #ddd;
+}
+
+.contactsubtask {
+	width: 850px;
+	float: left;
+}
+
+#filter-ds,#sort-ds {
+	width: 100%;
+	border: 1px solid #ddd;
+	float: left;
+}
+
+#Date-filter {
+	width: 250px;
+	border: 1px solid #ddd;
+	float: right;
+	margin: 15px 0px;
+	border-radius: 3px;
+}
+
+html body {
+	min-height: 820px;
+}
+
+thead .sorthead {
+	cursor: pointer;
+}
+
+.select2-choices {
+	border-radius: 4px;
+}
+
+.teamsubtask{
+	width:100%;
+}
