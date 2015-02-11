@@ -15,7 +15,7 @@ import javax.jdo.annotations.PrimaryKey;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.gmr.web.multipart.GMultipartFile;
-import org.springframework.web.multipart.MultipartFile;
+
 
 import com.google.appengine.api.datastore.Blob;
 import com.google.appengine.api.datastore.Key;
